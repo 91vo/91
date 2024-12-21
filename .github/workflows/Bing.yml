@@ -1,0 +1,23 @@
+name: Submit Site to Bing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  submit-to-bing:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2
+
+      - name: Submit URL to Bing
+        run: |
+          curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=b926075553494faca12769de4960e91c" \
+          -H "Content-Type: application/json" \
+          -d '{"siteUrl":"${{ steps.deployment.outputs.page_url }}","url":"${{ steps.deployment.outputs.page_url }}"}'
