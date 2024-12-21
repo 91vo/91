@@ -20,4 +20,4 @@ jobs:
         run: |
           curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=b926075553494faca12769de4960e91c" \
           -H "Content-Type: application/json" \
-          -d '{"siteUrl":"${{ steps.deployment.outputs.page_url }}","url":"${{ steps.deployment.outputs.page_url }}"}'
+          -d '{"siteUrl":"https://map.zol.hk/","url":"https://map.zol.hk/sitemap.php"}'
