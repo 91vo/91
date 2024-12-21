@@ -7,17 +7,11 @@ on:
 
 jobs:
   submit-to-bing:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository content
-        uses: actions/checkout@v2
-
       - name: Submit URL to Bing
         run: |
-          curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=b926075553494faca12769de4960e91c" \
+          curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=01a54536a9274662bd5670b085d5d9d8" \
           -H "Content-Type: application/json" \
           -d '{"siteUrl":"https://map.zol.hk/","url":"https://map.zol.hk/sitemap.php"}'
